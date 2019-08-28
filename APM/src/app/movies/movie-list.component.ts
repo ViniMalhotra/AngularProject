@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { IMovie} from './movie';
 @Component({
         selector: 'pm-movies',
-        templateUrl: './movie-list.component.html'
+        templateUrl: './movie-list.component.html',
+        styleUrls: ['./movie-list.component.css']
     })
 
-export class MovieListComponent {
+export class MovieListComponent implements OnInit {
     pageTitle = 'Movie List';
-    movies: any[] =[
-        {
+    imageWidth = 100;
+    imageMargin = 5;
+    showImage = false;
+    listFilter = 'cart';
+    movies: IMovie[] = [
+    {
     "movieId": 1,
     "movieName": "Leaf Rake",
     "movieCode": "GDN-0011",
@@ -24,9 +29,17 @@ export class MovieListComponent {
     "movieCode": "GDN-0023",
     "releaseDate": "March 18, 2019",
     "description": "15 gallon capacity rolling garden cart",
-    "price": 32.99,
+    "price": 32.9,
     "starRating": 4.2,
     "imageUrl": "assets/images/garden_cart.png"
   }
-    ];
+  ];
+
+    toggleImage(): void {
+        this.showImage = !this.showImage;
+    }
+
+    ngOnInit(): void {
+        console.log("hey");
+    }
 }
